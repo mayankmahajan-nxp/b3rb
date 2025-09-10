@@ -83,10 +83,10 @@ controller_server:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.30
     FollowPath:
       plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-      desired_linear_vel: 1.0
+      desired_linear_vel: 0.5
       lookahead_dist: 0.6
       min_lookahead_dist: 0.3
       max_lookahead_dist: 0.9
@@ -140,7 +140,7 @@ local_costmap:
         mark_threshold: 0
         observation_sources: scan
         scan:
-          topic: scan
+          topic: scan_front
           max_obstacle_height: 2.0
           clearing: True
           marking: True
@@ -171,7 +171,7 @@ global_costmap:
         enabled: True
         observation_sources: scan
         scan:
-          topic: scan
+          topic: scan_front
           max_obstacle_height: 2.0
           clearing: True
           marking: True
@@ -279,8 +279,8 @@ velocity_smoother:
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [1.5, 0.0, 1.5]
-    min_velocity: [-1.5, 0.0, -1.5]
+    max_velocity: [1.0, 0.0, 1.0]
+    min_velocity: [-1.0, 0.0, -1.0]
     max_accel: [2.5, 0.0, 2.0]
     max_decel: [-2.5, 0.0, -2.0]
     odom_topic: "/cerebri/out/odometry"
